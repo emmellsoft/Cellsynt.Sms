@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29215.179
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cellsynt.Sms", "Cellsynt.Sms\Cellsynt.Sms.csproj", "{34375298-2799-4DB1-A4E5-AA4086004CEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{34375298-2799-4DB1-A4E5-AA4086004CEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34375298-2799-4DB1-A4E5-AA4086004CEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34375298-2799-4DB1-A4E5-AA4086004CEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34375298-2799-4DB1-A4E5-AA4086004CEF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D173865B-836A-419D-9401-12B9C993C595}
+	EndGlobalSection
+EndGlobal
