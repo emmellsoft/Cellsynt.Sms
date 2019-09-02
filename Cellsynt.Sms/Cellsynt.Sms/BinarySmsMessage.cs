@@ -8,9 +8,17 @@ namespace Cellsynt.Sms
         {
         }
 
-        public BinarySmsMessage(string destination)
-            : base(destination)
+        public BinarySmsMessage(byte[] data, params string[] destinations)
         {
+            Data = data;
+            Destinations.AddRange(destinations);
+        }
+
+        public BinarySmsMessage(byte[] userDataHeader, byte[] data, params string[] destinations)
+        {
+            UserDataHeader = userDataHeader;
+            Data = data;
+            Destinations.AddRange(destinations);
         }
 
         public byte[] UserDataHeader { get; set; }

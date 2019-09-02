@@ -1,6 +1,6 @@
 ﻿namespace Cellsynt.Sms
 {
-    internal enum OriginatorKind
+    public enum OriginatorType
     {
         Numeric,
         ShortCode,

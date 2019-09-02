@@ -6,15 +6,6 @@ namespace Cellsynt.Sms
 {
     public abstract class SmsMessage
     {
-        protected SmsMessage()
-        {
-        }
-
-        protected SmsMessage(string destination)
-        {
-            Destinations.Add(destination);
-        }
-
         public List<string> Destinations { get; } = new List<string>();
 
         public virtual void Validate()

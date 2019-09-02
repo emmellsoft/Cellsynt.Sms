@@ -7,13 +7,12 @@ namespace Cellsynt.Sms
     {
         public TextSmsMessage()
         {
-            MaxMessageCount = 1;
         }
 
-        public TextSmsMessage(string destination)
-            : base(destination)
+        public TextSmsMessage(string text, params string[] destinations)
         {
-            MaxMessageCount = 1;
+            Text = text;
+            Destinations.AddRange(destinations);
         }
 
         /// <summary>
@@ -21,13 +20,21 @@ namespace Cellsynt.Sms
         /// </summary>
         public string Text { get; set; }
 
-        public TextSmsEncoding Encoding { get; set; }
+        /// <summary>
+        /// Encoding of the message
+        /// </summary>
+        public TextSmsEncoding Encoding { get; set; } = TextSmsEncoding.Unicode;
 
         /// <summary>
         /// A long text may be split into these many messages. Max = 6.
         /// </summary>
-        public int MaxMessageCount { get; set; }
+        public int MaxMessageCount { get; set; } = 6;
 
+        /// <summary>
+        /// Set to true if the message should be sent as a "flash message", i.e. displayed directly on phone screen instead of being saved to inbox.
+        /// Please note that support for flash messages cannot be guaranteed to all operator networks.
+        /// If flash is not supported the message will be sent as a regular text message instead.
+        /// </summary>
         public bool Flash { get; set; }
 
         public override void Validate()
@@ -71,13 +78,12 @@ namespace Cellsynt.Sms
                 messageCount = (charCount + multiMessageCharCount - 1) / multiMessageCharCount;
             }
 
-            int maxMessageCount = MaxMessageCount;
-            if (maxMessageCount > 6)
+            if ((MaxMessageCount < 1) || (MaxMessageCount > 6))
             {
-                maxMessageCount = 6;
+                throw new SmsValidationException(SmsValidationErrorCode.TextSmsTextMaxMessageCountOutOfRange);
             }
 
-            if (messageCount > maxMessageCount)
+            if (messageCount > MaxMessageCount)
             {
                 throw new SmsValidationException(SmsValidationErrorCode.TextSmsTextTooLong);
             }

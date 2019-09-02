@@ -4,6 +4,6 @@ namespace Cellsynt.Sms
 {
     public interface ICellsyntSmsGateway
     {
-        Task<SendResult> Send(SmsMessage message);
+        Task<SendResult> Send(SmsOriginator originator, SmsMessage message);
     }
 }

@@ -3,6 +3,11 @@
     public enum SmsValidationErrorCode
     {
         /// <summary>
+        /// The SmsMessage is of unknown type
+        /// </summary>
+        UnknownType,
+
+        /// <summary>
         /// No destinations specified
         /// </summary>
         NoDestinations,
@@ -41,6 +46,11 @@
         /// TextSmsMessage: The text contains illegal characters
         /// </summary>
         TextSmsIllegalChar,
+
+        /// <summary>
+        /// TextSmsMessage: The MaxMessageCount property must be between 1 and 6.
+        /// </summary>
+        TextSmsTextMaxMessageCountOutOfRange,
 
         /// <summary>
         /// TextSmsMessage: The text is too long
