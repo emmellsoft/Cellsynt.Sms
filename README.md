@@ -22,7 +22,7 @@ try
     
     // Sending an SMS as "Testing" to the mobile phone number 0012345678
     SendResult sendResult = await gateway.Send(
-        SmsOriginator.AsAlpha("Testing"),
+        Originator.AsAlpha("Testing"),
         new TextSmsMessage("Hello, world!", "0012345678"));
 
     // The tracking ID's in the send result can be used to verify the delivery
