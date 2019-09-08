@@ -2,26 +2,24 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 
 namespace Cellsynt.Sms
 {
-    internal class ApiBodyBuilder
+    internal class ApiParamsBuilder
     {
         private readonly CellsyntCredentials _credentials;
 
-        public ApiBodyBuilder(CellsyntCredentials credentials)
+        public ApiParamsBuilder(CellsyntCredentials credentials)
         {
-            _credentials = credentials;
+            _credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
         }
 
-        public string GetBody(SmsOriginator originator, SmsMessage message)
+        public IDictionary<string, string> GetParameters(SmsOriginator originator, SmsMessage message)
         {
             var parameters = new Dictionary<string, string>
             {
                 { "username", _credentials.UserName },
                 { "password", _credentials.Password },
-                { "charset", "UTF-8" },
                 { "destination", string.Join(",", message.Destinations) }
             };
 
@@ -44,7 +42,7 @@ namespace Cellsynt.Sms
                 throw new SmsValidationException(SmsValidationErrorCode.UnknownType);
             }
 
-            return string.Join("&", parameters.Select(kvp => $"{kvp.Key}={WebUtility.UrlEncode(kvp.Value)}"));
+            return parameters;
         }
 
         private static string GetOriginatorType(SmsOriginator originator)
@@ -67,6 +65,8 @@ namespace Cellsynt.Sms
 
         private static void AppendTextSmsMessageParameters(Dictionary<string, string> parameters, TextSmsMessage message)
         {
+            parameters.Add("charset", "UTF-8");
+
             string type;
             switch (message.Encoding)
             {

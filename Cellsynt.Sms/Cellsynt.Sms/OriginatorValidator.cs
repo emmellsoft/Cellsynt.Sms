@@ -1,4 +1,5 @@
 ﻿using Cellsynt.Sms.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -18,7 +19,12 @@ namespace Cellsynt.Sms
 
         public static string ValidateNumeric(string originator)
         {
-            if (string.IsNullOrEmpty(originator))
+            if (originator == null)
+            {
+                throw new ArgumentNullException(nameof(originator));
+            }
+
+            if (originator.Length == 0)
             {
                 throw new OriginatorException(OriginatorErrorCode.OriginatorEmpty);
             }
@@ -43,7 +49,12 @@ namespace Cellsynt.Sms
 
         public static string ValidateShortCode(string originator)
         {
-            if (string.IsNullOrEmpty(originator))
+            if (originator == null)
+            {
+                throw new ArgumentNullException(nameof(originator));
+            }
+
+            if (originator.Length == 0)
             {
                 throw new OriginatorException(OriginatorErrorCode.OriginatorEmpty);
             }
@@ -63,7 +74,12 @@ namespace Cellsynt.Sms
 
         public static string ValidateAlpha(string originator, bool strict)
         {
-            if (string.IsNullOrEmpty(originator))
+            if (originator == null)
+            {
+                throw new ArgumentNullException(nameof(originator));
+            }
+
+            if (originator.Length == 0)
             {
                 throw new OriginatorException(OriginatorErrorCode.OriginatorEmpty);
             }

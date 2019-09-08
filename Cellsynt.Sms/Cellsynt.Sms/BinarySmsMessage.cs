@@ -4,8 +4,9 @@ namespace Cellsynt.Sms
 {
     public class BinarySmsMessage : SmsMessage
     {
-        public BinarySmsMessage()
+        public BinarySmsMessage(params string[] destinations)
         {
+            Destinations.AddRange(destinations);
         }
 
         public BinarySmsMessage(byte[] data, params string[] destinations)

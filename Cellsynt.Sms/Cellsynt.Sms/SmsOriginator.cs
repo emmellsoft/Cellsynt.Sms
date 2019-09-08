@@ -2,17 +2,17 @@
 {
     public class SmsOriginator
     {
-        public static SmsOriginator FromNumeric(string originator)
+        public static SmsOriginator AsNumeric(string originator)
         {
             return new SmsOriginator(OriginatorType.Numeric, OriginatorValidator.ValidateNumeric(originator));
         }
 
-        public static SmsOriginator FromShortCode(string originator)
+        public static SmsOriginator AsShortCode(string originator)
         {
             return new SmsOriginator(OriginatorType.ShortCode, OriginatorValidator.ValidateShortCode(originator));
         }
 
-        public static SmsOriginator FromAlpha(string originator, bool strict = true)
+        public static SmsOriginator AsAlpha(string originator, bool strict = true)
         {
             return new SmsOriginator(OriginatorType.Alpha, OriginatorValidator.ValidateAlpha(originator, strict));
         }
