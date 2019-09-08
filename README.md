@@ -20,9 +20,9 @@ try
     // Create the gateway
     ICellsyntSmsGateway gateway = CellsyntSmsGatewayFactory.Create(credentials);
     
-    // Sending an SMS as "The Sender" to the mobile phone number 0012345678
+    // Sending an SMS as "Testing" to the mobile phone number 0012345678
     SendResult sendResult = await gateway.Send(
-        SmsOriginator.AsAlpha("The Sender"),
+        SmsOriginator.AsAlpha("Testing"),
         new TextSmsMessage("Hello, world!", "0012345678"));
 
     // The tracking ID's in the send result can be used to verify the delivery
