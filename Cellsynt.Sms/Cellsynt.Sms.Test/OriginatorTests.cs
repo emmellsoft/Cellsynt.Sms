@@ -5,91 +5,91 @@ using Xunit;
 
 namespace Cellsynt.Sms.Test
 {
-    public class SmsOriginatorTests
+    public class OriginatorTests
     {
-        public class Numeric : SmsOriginatorTests
+        public class PhoneNumber : OriginatorTests
         {
             [Fact]
             public void Null_is_invalid()
             {
-                Should.Throw<ArgumentNullException>(() => SmsOriginator.AsNumeric(null));
+                Should.Throw<ArgumentNullException>(() => Originator.AsPhoneNumber(null));
             }
 
             [Fact]
             public void Empty_is_invalid()
             {
-                Should.Throw<OriginatorException>(() => SmsOriginator.AsNumeric(string.Empty))
-                    .ErrorCode.ShouldBe(OriginatorErrorCode.OriginatorEmpty);
+                Should.Throw<OriginatorException>(() => Originator.AsPhoneNumber(string.Empty))
+                    .ErrorCode.ShouldBe(OriginatorErrorCode.Empty);
             }
 
             [Fact]
             public void Leading_zero_is_invalid()
             {
-                Should.Throw<OriginatorException>(() => SmsOriginator.AsNumeric("0123"))
-                    .ErrorCode.ShouldBe(OriginatorErrorCode.OriginatorLeadingZero);
+                Should.Throw<OriginatorException>(() => Originator.AsPhoneNumber("0123"))
+                    .ErrorCode.ShouldBe(OriginatorErrorCode.LeadingZero);
             }
 
             [Fact]
             public void One_digit_is_valid()
             {
-                SmsOriginator originator = SmsOriginator.AsNumeric("1");
+                Originator originator = Originator.AsPhoneNumber("1");
                 originator.ShouldNotBeNull();
-                originator.Type.ShouldBe(OriginatorType.Numeric);
+                originator.Type.ShouldBe(OriginatorType.PhoneNumber);
                 originator.Value.ShouldBe("1");
             }
 
             [Fact]
             public void Five_digits_is_valid()
             {
-                SmsOriginator originator = SmsOriginator.AsNumeric("12345");
+                Originator originator = Originator.AsPhoneNumber("12345");
                 originator.ShouldNotBeNull();
-                originator.Type.ShouldBe(OriginatorType.Numeric);
+                originator.Type.ShouldBe(OriginatorType.PhoneNumber);
                 originator.Value.ShouldBe("12345");
             }
 
             [Fact]
             public void Fifteen_digits_is_valid()
             {
-                SmsOriginator originator = SmsOriginator.AsNumeric("123456789012345");
+                Originator originator = Originator.AsPhoneNumber("123456789012345");
                 originator.ShouldNotBeNull();
-                originator.Type.ShouldBe(OriginatorType.Numeric);
+                originator.Type.ShouldBe(OriginatorType.PhoneNumber);
                 originator.Value.ShouldBe("123456789012345");
             }
 
             [Fact]
             public void Sixteen_digits_is_invalid()
             {
-                Should.Throw<OriginatorException>(() => SmsOriginator.AsNumeric("1234567890123456"))
-                    .ErrorCode.ShouldBe(OriginatorErrorCode.OriginatorTooLong);
+                Should.Throw<OriginatorException>(() => Originator.AsPhoneNumber("1234567890123456"))
+                    .ErrorCode.ShouldBe(OriginatorErrorCode.TooLong);
             }
 
             [Fact]
             public void Non_digits_is_invalid()
             {
-                Should.Throw<OriginatorException>(() => SmsOriginator.AsNumeric("123A45"))
-                    .ErrorCode.ShouldBe(OriginatorErrorCode.OriginatorNonNumeric);
+                Should.Throw<OriginatorException>(() => Originator.AsPhoneNumber("123A45"))
+                    .ErrorCode.ShouldBe(OriginatorErrorCode.NonNumeric);
             }
         }
 
-        public class ShortCode : SmsOriginatorTests
+        public class ShortCode : OriginatorTests
         {
             [Fact]
             public void Null_is_invalid()
             {
-                Should.Throw<ArgumentNullException>(() => SmsOriginator.AsShortCode(null));
+                Should.Throw<ArgumentNullException>(() => Originator.AsShortCode(null));
             }
 
             [Fact]
             public void Empty_is_invalid()
             {
-                Should.Throw<OriginatorException>(() => SmsOriginator.AsShortCode(string.Empty))
-                    .ErrorCode.ShouldBe(OriginatorErrorCode.OriginatorEmpty);
+                Should.Throw<OriginatorException>(() => Originator.AsShortCode(string.Empty))
+                    .ErrorCode.ShouldBe(OriginatorErrorCode.Empty);
             }
 
             [Fact]
             public void Leading_zero_is_valid()
             {
-                SmsOriginator originator = SmsOriginator.AsShortCode("0123");
+                Originator originator = Originator.AsShortCode("0123");
                 originator.ShouldNotBeNull();
                 originator.Type.ShouldBe(OriginatorType.ShortCode);
                 originator.Value.ShouldBe("0123");
@@ -98,7 +98,7 @@ namespace Cellsynt.Sms.Test
             [Fact]
             public void One_digit_is_valid()
             {
-                SmsOriginator originator = SmsOriginator.AsShortCode("1");
+                Originator originator = Originator.AsShortCode("1");
                 originator.ShouldNotBeNull();
                 originator.Type.ShouldBe(OriginatorType.ShortCode);
                 originator.Value.ShouldBe("1");
@@ -107,7 +107,7 @@ namespace Cellsynt.Sms.Test
             [Fact]
             public void Five_digits_is_valid()
             {
-                SmsOriginator originator = SmsOriginator.AsShortCode("12345");
+                Originator originator = Originator.AsShortCode("12345");
                 originator.ShouldNotBeNull();
                 originator.Type.ShouldBe(OriginatorType.ShortCode);
                 originator.Value.ShouldBe("12345");
@@ -116,7 +116,7 @@ namespace Cellsynt.Sms.Test
             [Fact]
             public void Fifteen_digits_is_valid()
             {
-                SmsOriginator originator = SmsOriginator.AsShortCode("123456789012345");
+                Originator originator = Originator.AsShortCode("123456789012345");
                 originator.ShouldNotBeNull();
                 originator.Type.ShouldBe(OriginatorType.ShortCode);
                 originator.Value.ShouldBe("123456789012345");
@@ -125,37 +125,37 @@ namespace Cellsynt.Sms.Test
             [Fact]
             public void Sixteen_digits_is_invalid()
             {
-                Should.Throw<OriginatorException>(() => SmsOriginator.AsShortCode("1234567890123456"))
-                    .ErrorCode.ShouldBe(OriginatorErrorCode.OriginatorTooLong);
+                Should.Throw<OriginatorException>(() => Originator.AsShortCode("1234567890123456"))
+                    .ErrorCode.ShouldBe(OriginatorErrorCode.TooLong);
             }
 
             [Fact]
             public void Non_digits_is_invalid()
             {
-                Should.Throw<OriginatorException>(() => SmsOriginator.AsShortCode("123A45"))
-                    .ErrorCode.ShouldBe(OriginatorErrorCode.OriginatorNonNumeric);
+                Should.Throw<OriginatorException>(() => Originator.AsShortCode("123A45"))
+                    .ErrorCode.ShouldBe(OriginatorErrorCode.NonNumeric);
             }
         }
 
-        public class Alpha : SmsOriginatorTests
+        public class Alpha : OriginatorTests
         {
             [Fact]
             public void Null_is_invalid()
             {
-                Should.Throw<ArgumentNullException>(() => SmsOriginator.AsAlpha(null));
+                Should.Throw<ArgumentNullException>(() => Originator.AsAlpha(null));
             }
 
             [Fact]
             public void Empty_is_invalid()
             {
-                Should.Throw<OriginatorException>(() => SmsOriginator.AsAlpha(string.Empty))
-                    .ErrorCode.ShouldBe(OriginatorErrorCode.OriginatorEmpty);
+                Should.Throw<OriginatorException>(() => Originator.AsAlpha(string.Empty))
+                    .ErrorCode.ShouldBe(OriginatorErrorCode.Empty);
             }
 
             [Fact]
             public void One_char_is_valid()
             {
-                SmsOriginator originator = SmsOriginator.AsAlpha("A");
+                Originator originator = Originator.AsAlpha("A");
                 originator.ShouldNotBeNull();
                 originator.Type.ShouldBe(OriginatorType.Alpha);
                 originator.Value.ShouldBe("A");
@@ -164,7 +164,7 @@ namespace Cellsynt.Sms.Test
             [Fact]
             public void Five_chars_is_valid()
             {
-                SmsOriginator originator = SmsOriginator.AsAlpha("Abc42");
+                Originator originator = Originator.AsAlpha("Abc42");
                 originator.ShouldNotBeNull();
                 originator.Type.ShouldBe(OriginatorType.Alpha);
                 originator.Value.ShouldBe("Abc42");
@@ -173,7 +173,7 @@ namespace Cellsynt.Sms.Test
             [Fact]
             public void Eleven_chars_is_valid()
             {
-                SmsOriginator originator = SmsOriginator.AsAlpha("AbCZz12h39Q");
+                Originator originator = Originator.AsAlpha("AbCZz12h39Q");
                 originator.ShouldNotBeNull();
                 originator.Type.ShouldBe(OriginatorType.Alpha);
                 originator.Value.ShouldBe("AbCZz12h39Q");
@@ -182,21 +182,21 @@ namespace Cellsynt.Sms.Test
             [Fact]
             public void Twelve_digits_is_invalid()
             {
-                Should.Throw<OriginatorException>(() => SmsOriginator.AsAlpha("AbCZz12h39QX"))
-                    .ErrorCode.ShouldBe(OriginatorErrorCode.OriginatorTooLong);
+                Should.Throw<OriginatorException>(() => Originator.AsAlpha("AbCZz12h39QX"))
+                    .ErrorCode.ShouldBe(OriginatorErrorCode.TooLong);
             }
 
             [Fact]
             public void Non_Supported_chars_when_strict_is_invalid()
             {
-                Should.Throw<OriginatorException>(() => SmsOriginator.AsAlpha("Café", true))
-                    .ErrorCode.ShouldBe(OriginatorErrorCode.OriginatorUnsupportedChars);
+                Should.Throw<OriginatorException>(() => Originator.AsAlpha("Café", true))
+                    .ErrorCode.ShouldBe(OriginatorErrorCode.UnsupportedChars);
             }
 
             [Fact]
             public void Non_Supported_chars_when_not_strict_is_valid()
             {
-                SmsOriginator originator = SmsOriginator.AsAlpha("Café", false);
+                Originator originator = Originator.AsAlpha("Café", false);
                 originator.ShouldNotBeNull();
                 originator.Type.ShouldBe(OriginatorType.Alpha);
                 originator.Value.ShouldBe("Café");

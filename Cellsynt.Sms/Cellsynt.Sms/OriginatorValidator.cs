@@ -26,22 +26,22 @@ namespace Cellsynt.Sms
 
             if (originator.Length == 0)
             {
-                throw new OriginatorException(OriginatorErrorCode.OriginatorEmpty);
+                throw new OriginatorException(OriginatorErrorCode.Empty);
             }
 
             if (originator.Length > 15)
             {
-                throw new OriginatorException(OriginatorErrorCode.OriginatorTooLong);
+                throw new OriginatorException(OriginatorErrorCode.TooLong);
             }
 
             if (originator[0] == '0')
             {
-                throw new OriginatorException(OriginatorErrorCode.OriginatorLeadingZero);
+                throw new OriginatorException(OriginatorErrorCode.LeadingZero);
             }
 
             if (originator.Any(c => (c < '0') || (c > '9')))
             {
-                throw new OriginatorException(OriginatorErrorCode.OriginatorNonNumeric);
+                throw new OriginatorException(OriginatorErrorCode.NonNumeric);
             }
 
             return originator;
@@ -56,17 +56,17 @@ namespace Cellsynt.Sms
 
             if (originator.Length == 0)
             {
-                throw new OriginatorException(OriginatorErrorCode.OriginatorEmpty);
+                throw new OriginatorException(OriginatorErrorCode.Empty);
             }
 
             if (originator.Length > 15)
             {
-                throw new OriginatorException(OriginatorErrorCode.OriginatorTooLong);
+                throw new OriginatorException(OriginatorErrorCode.TooLong);
             }
 
             if (originator.Any(c => (c < '0') || (c > '9')))
             {
-                throw new OriginatorException(OriginatorErrorCode.OriginatorNonNumeric);
+                throw new OriginatorException(OriginatorErrorCode.NonNumeric);
             }
 
             return originator;
@@ -81,17 +81,17 @@ namespace Cellsynt.Sms
 
             if (originator.Length == 0)
             {
-                throw new OriginatorException(OriginatorErrorCode.OriginatorEmpty);
+                throw new OriginatorException(OriginatorErrorCode.Empty);
             }
 
             if (originator.Length > 11)
             {
-                throw new OriginatorException(OriginatorErrorCode.OriginatorTooLong);
+                throw new OriginatorException(OriginatorErrorCode.TooLong);
             }
 
             if (strict && originator.Any(c => !ValidAlphaChars.Contains(c)))
             {
-                throw new OriginatorException(OriginatorErrorCode.OriginatorUnsupportedChars);
+                throw new OriginatorException(OriginatorErrorCode.UnsupportedChars);
             }
 
             return originator;

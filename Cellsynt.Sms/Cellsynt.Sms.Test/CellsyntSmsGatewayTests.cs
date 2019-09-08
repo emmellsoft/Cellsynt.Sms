@@ -27,7 +27,7 @@ namespace Cellsynt.Sms.Test
             _dummyMessage = new TextSmsMessage("Hello, World!", "0012345")
             {
                 MaxMessageCount = 1,
-                Encoding = TextSmsEncoding.Gsm0338
+                EncodingType = TextEncodingType.Gsm0338
             };
         }
 
@@ -50,7 +50,7 @@ namespace Cellsynt.Sms.Test
             var message = new TextSmsMessage("Hello, World!", "0012345")
             {
                 MaxMessageCount = 1,
-                Encoding = TextSmsEncoding.Gsm0338
+                EncodingType = TextEncodingType.Gsm0338
             };
 
             _credentials.UserName = "NewName";
@@ -78,7 +78,7 @@ namespace Cellsynt.Sms.Test
             var message = new TextSmsMessage("Hello, World!", "0012345")
             {
                 MaxMessageCount = 1,
-                Encoding = TextSmsEncoding.Gsm0338
+                EncodingType = TextEncodingType.Gsm0338
             };
 
             // ACT
@@ -100,11 +100,11 @@ namespace Cellsynt.Sms.Test
         public async Task Text_with_Numeric_originator()
         {
             // ARRANGE
-            SmsOriginator originator = SmsOriginator.AsNumeric("8888");
+            Originator originator = Originator.AsPhoneNumber("8888");
             var message = new TextSmsMessage("Hello, World!", "0012345")
             {
                 MaxMessageCount = 1,
-                Encoding = TextSmsEncoding.Gsm0338
+                EncodingType = TextEncodingType.Gsm0338
             };
 
             // ACT
@@ -128,11 +128,11 @@ namespace Cellsynt.Sms.Test
         public async Task Text_with_ShortCode_originator()
         {
             // ARRANGE
-            SmsOriginator originator = SmsOriginator.AsShortCode("777");
+            Originator originator = Originator.AsShortCode("777");
             var message = new TextSmsMessage("Hello, World!", "0012345")
             {
                 MaxMessageCount = 1,
-                Encoding = TextSmsEncoding.Gsm0338
+                EncodingType = TextEncodingType.Gsm0338
             };
 
             // ACT
@@ -156,11 +156,11 @@ namespace Cellsynt.Sms.Test
         public async Task Text_with_Alpha_originator()
         {
             // ARRANGE
-            SmsOriginator originator = SmsOriginator.AsAlpha("ABC");
+            Originator originator = Originator.AsAlpha("ABC");
             var message = new TextSmsMessage("Hello, World!", "0012345")
             {
                 MaxMessageCount = 1,
-                Encoding = TextSmsEncoding.Gsm0338
+                EncodingType = TextEncodingType.Gsm0338
             };
 
             // ACT
@@ -187,7 +187,7 @@ namespace Cellsynt.Sms.Test
             var message = new TextSmsMessage("Hello, World!", "0012345")
             {
                 MaxMessageCount = 1,
-                Encoding = TextSmsEncoding.Gsm0338
+                EncodingType = TextEncodingType.Gsm0338
             };
 
             // ACT
@@ -212,7 +212,7 @@ namespace Cellsynt.Sms.Test
             var message = new TextSmsMessage("Hello, World!", "0012345")
             {
                 MaxMessageCount = 1,
-                Encoding = TextSmsEncoding.Unicode
+                EncodingType = TextEncodingType.Unicode
             };
 
             // ACT
@@ -237,7 +237,7 @@ namespace Cellsynt.Sms.Test
             var message = new TextSmsMessage("Hello, World!", "0012345", "0023456")
             {
                 MaxMessageCount = 1,
-                Encoding = TextSmsEncoding.Gsm0338
+                EncodingType = TextEncodingType.Gsm0338
             };
 
             // ACT
@@ -273,7 +273,7 @@ namespace Cellsynt.Sms.Test
                 "0099999")
             {
                 MaxMessageCount = 1,
-                Encoding = TextSmsEncoding.Gsm0338
+                EncodingType = TextEncodingType.Gsm0338
             };
 
             // ACT
@@ -298,7 +298,7 @@ namespace Cellsynt.Sms.Test
             var message = new TextSmsMessage("Hello, World!", "0012345")
             {
                 MaxMessageCount = 3,
-                Encoding = TextSmsEncoding.Gsm0338
+                EncodingType = TextEncodingType.Gsm0338
             };
 
             // ACT
@@ -324,7 +324,7 @@ namespace Cellsynt.Sms.Test
             var message = new TextSmsMessage("Ελλάδα", "0012345")
             {
                 MaxMessageCount = 1,
-                Encoding = TextSmsEncoding.Unicode
+                EncodingType = TextEncodingType.Unicode
             };
 
             // ACT

@@ -1,6 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>1.0.1</Version>
+    <Title>Cellsynt.Sms</Title>
+    <Authors>Mattias Larsson</Authors>
+    <Company>Living IT</Company>
+    <Description>Library for sending SMS (text and binary) using the Cellsynt Mobile Services.</Description>
+    <PackageProjectUrl>https://github.com/emmellsoft/Cellsynt.Sms</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/emmellsoft/Cellsynt.Sms</RepositoryUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 </Project>

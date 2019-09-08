@@ -17,7 +17,7 @@ namespace Cellsynt.Sms
             _paramsBuilder = new ApiParamsBuilder(credentials);
         }
 
-        public async Task<SendResult> Send(SmsOriginator originator, SmsMessage message)
+        public async Task<SendResult> Send(Originator originator, SmsMessage message)
         {
             if (message == null)
             {

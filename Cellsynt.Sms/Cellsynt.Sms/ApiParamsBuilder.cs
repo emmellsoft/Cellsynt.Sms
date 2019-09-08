@@ -14,7 +14,7 @@ namespace Cellsynt.Sms
             _credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
         }
 
-        public IDictionary<string, string> GetParameters(SmsOriginator originator, SmsMessage message)
+        public IDictionary<string, string> GetParameters(Originator originator, SmsMessage message)
         {
             var parameters = new Dictionary<string, string>
             {
@@ -45,11 +45,11 @@ namespace Cellsynt.Sms
             return parameters;
         }
 
-        private static string GetOriginatorType(SmsOriginator originator)
+        private static string GetOriginatorType(Originator originator)
         {
             switch (originator.Type)
             {
-                case OriginatorType.Numeric:
+                case OriginatorType.PhoneNumber:
                     return "numeric";
 
                 case OriginatorType.ShortCode:
@@ -68,13 +68,13 @@ namespace Cellsynt.Sms
             parameters.Add("charset", "UTF-8");
 
             string type;
-            switch (message.Encoding)
+            switch (message.EncodingType)
             {
-                case TextSmsEncoding.Gsm0338:
+                case TextEncodingType.Gsm0338:
                     type = "text";
                     break;
 
-                case TextSmsEncoding.Unicode:
+                case TextEncodingType.Unicode:
                     type = "unicode";
                     break;
 

@@ -1,5 +1,8 @@
 ﻿namespace Cellsynt.Sms.Exceptions
 {
+    /// <summary>
+    /// The various SMS validation errors
+    /// </summary>
     public enum SmsValidationErrorCode
     {
         /// <summary>

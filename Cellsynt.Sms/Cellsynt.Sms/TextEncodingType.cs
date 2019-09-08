@@ -1,6 +1,9 @@
 ﻿namespace Cellsynt.Sms
 {
-    public enum TextSmsEncoding
+    /// <summary>
+    /// The encoding types
+    /// </summary>
+    public enum TextEncodingType
     {
         /// <summary>
         /// GSM 03.38

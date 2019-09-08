@@ -12,7 +12,7 @@ namespace Cellsynt.Sms.Test
         {
             _message = new TextSmsMessage(string.Empty, "00123")
             {
-                Encoding = TextSmsEncoding.Unicode
+                EncodingType = TextEncodingType.Unicode
             };
         }
 
