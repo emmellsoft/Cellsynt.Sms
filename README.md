@@ -28,5 +28,5 @@ catch (Exception exception)
 {
     // Something went wrong...
     Console.WriteLine(exception);
-}```
+}
 
