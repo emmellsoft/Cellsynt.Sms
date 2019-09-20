@@ -12,6 +12,7 @@ namespace Cellsynt.Sms.Exceptions
         /// </summary>
         /// <param name="errorCode">The error code</param>
         public SmsValidationException(SmsValidationErrorCode errorCode)
+            : base(ErrorCodeSupport.GetMessage(errorCode))
         {
             ErrorCode = errorCode;
         }

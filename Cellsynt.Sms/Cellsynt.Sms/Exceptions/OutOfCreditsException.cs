@@ -7,5 +7,9 @@ namespace Cellsynt.Sms.Exceptions
     /// </summary>
     public class OutOfCreditsException : Exception
     {
+        public OutOfCreditsException()
+            : base("You have run out of credits")
+        {
+        }
     }
 }

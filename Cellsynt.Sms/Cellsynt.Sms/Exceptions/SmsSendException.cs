@@ -14,7 +14,7 @@ namespace Cellsynt.Sms.Exceptions
         /// <param name="message">The message from the Cellsynt SMS host</param>
         /// <param name="statusCode">The HTTP status code returned by the Cellsynt SMS host</param>
         public SmsSendException(string message, HttpStatusCode statusCode)
-            : base(message)
+            : base($"Code={statusCode}, Message={message}")
         {
             StatusCode = statusCode;
         }
